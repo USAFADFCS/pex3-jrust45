@@ -6,7 +6,9 @@
  * Purpose: Reads a BYU binary memory trace file and simulates
  *          LRU page replacement to measure fault rates across
  *          varying frame allocations.
- * Documentation: TBD
+ * Documentation: 
+ * 
+ * This website for how to use calloc: https://www.geeksforgeeks.org/c/dynamic-memory-allocation-in-c-using-malloc-calloc-free-and-realloc/
  * =========================================================== */
 #include <stdio.h>
 #include <stdlib.h>
@@ -72,7 +74,7 @@ int main(int argc, char **argv) {
     //       total number of page faults that occur when f frames are
     //       available.  Use calloc so all entries start at zero.
     PageQueue* pq = pqInit(maxFrames);
-    int faults[maxFrames];
+    long* faults = (long*)calloc(maxFrames+1, sizeof(long));
     
     // Process each memory access from the trace file
     while (!feof(ifp)) {
@@ -95,6 +97,18 @@ int main(int argc, char **argv) {
         //                    (fault for any allocation with fewer than d+1 frames)
         //
         //       Update faults[] accordingly.
+        long result = pqAccess(pq, pageNum);
+        
+        if (result == -1) {
+            for (int f = 1; f < maxFrames + 1; f++) {
+                faults[f]++;
+            }
+        }
+        else {
+            for (long f = 1; f < result + 1; f++) {
+                faults[(int)f]++;
+            }
+        }
 
     }
 
@@ -107,9 +121,15 @@ int main(int argc, char **argv) {
     // TODO: Loop from frame count 1 to maxFrames and print each row:
     //       printf("%d,%lu,%f\n", frameCount, faults[frameCount],
     //              (double)faults[frameCount] / (double)numAccesses);
+    for (int f = 1; f < maxFrames + 1; f++) {
+        printf("%d,%lu,%f\n", f, faults[f],(double)faults[f] / (double)numAccesses);
+    }
 
     // TODO: Free your PageQueue and the faults[] array,
     //       then close the file.
+    pqFree(pq);
+    free(faults);
+    fclose(ifp);
 
     return 0;
 }
