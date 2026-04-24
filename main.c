@@ -8,7 +8,19 @@
  *          varying frame allocations.
  * Documentation: 
  * 
- * This website for how to use calloc: https://www.geeksforgeeks.org/c/dynamic-memory-allocation-in-c-using-malloc-calloc-free-and-realloc/
+ * I compared my output graph (like the one in the report) with C1C Watson and they matched. If
+ * they did not match, I would have continued  to refine my code. No copying occurred  and this was
+ * within the help policy. I used this website for how to use calloc: https://www.geeksforgeeks.
+ * org/c/dynamic-memory-allocation-in-c-using-malloc-calloc-free-and-realloc/. I also  utilized 
+ * Claude to make a python script to make my graphs since it was within the boundaries of AI use
+ *  per the help policy. I did not use it to analyze  the graphs but since the instructions for 
+ * making a graph were already outlined, I felt that taking that and having Claude make a python
+ *  script would be the same. The chat I had with Claude (after giving it the help policy) is 
+ * linked here: https://claude.ai/share/97aac2fd-acd5-46e2-b7d0-7566883b15ce.
+ * 
+ * No AI was used in the actual coding of main.c or in pagequeue.c. No copying of code from anyone
+ * but Jack's previous self-occurred  (and it was his Euchre final project in which he made a 
+ * double linked list prior to even learning about it).
  * =========================================================== */
 #include <stdio.h>
 #include <stdlib.h>

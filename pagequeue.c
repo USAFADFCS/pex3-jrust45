@@ -1,7 +1,7 @@
 /** pagequeue.c
  * ===========================================================
- * Name: _______________________, __ ___ 2026
- * Section: CS483 / ____
+ * Name: C1C John Rust III, 2026
+ * Section: CS483 / M4
  * Project: PEX3 - Page Replacement Simulator
  * Purpose: Implementation of the PageQueue ADT — a doubly-linked
  *          list for LRU page replacement.
